@@ -1,0 +1,38 @@
+<%
+
+response.contentType = 'application/json';
+
+var verb = request.getMethod();
+var data = request.getContent();
+var log = new Log();
+
+var uri = request.getRequestURI();
+uri = uri.substring(request.getContextPath().length);
+
+if(data != "") {
+    data = parse(data);
+}
+
+
+if(verb == "POST") {
+
+	var settings = application.get("settings");
+
+	if(!settings){
+		settings = new Object();
+	}
+
+	settings.paymentApiEndpoint = data.paymentApiEndpoint;
+	settings.accessToken = data.accessToken;
+
+	application.put("settings", settings);
+
+	log.info(settings);
+
+	print({status:"success"});
+
+}else{
+	response.sendError(400);
+}
+
+%>

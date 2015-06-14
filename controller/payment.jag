@@ -1,0 +1,22 @@
+<%
+include("../model/paymentClient.jag");
+response.contentType = 'text/json';
+
+var verb = request.getMethod();
+var data = request.getContent();
+
+var log = new Log();
+
+
+if(data != "") {
+	data = parse(data);
+}
+
+if (verb == "POST"){
+	log.info("Connecting to the payment API");
+	var response = pay(data);
+	print({status:"successful", transactionId : response.id});
+}
+
+
+%>

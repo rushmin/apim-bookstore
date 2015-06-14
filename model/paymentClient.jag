@@ -1,0 +1,19 @@
+<%
+
+function pay(payment){
+
+  var settings = application.get("settings");
+
+  var paymentApiEndpoint = settings.paymentApiEndpoint;
+	var accessToken = settings.accessToken;
+
+
+  // Call payment API
+  tokenHeaderValue = "Bearer " + accessToken;
+  var response = post(paymentApiEndpoint, JSON.stringify(payment), {"Authorization": tokenHeaderValue, "Content-Type2" : "application/json"}, "json");
+
+  return response;
+
+}
+
+%>
