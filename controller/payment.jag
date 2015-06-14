@@ -1,5 +1,8 @@
 <%
+
+include("../model/settingsManager.jag");
 include("../model/paymentClient.jag");
+
 response.contentType = 'text/json';
 
 var verb = request.getMethod();

@@ -1,5 +1,7 @@
 <%
 
+include("../model/settingsManager.jag");
+
 response.contentType = 'application/json';
 
 var verb = request.getMethod();
@@ -16,18 +18,10 @@ if(data != "") {
 
 if(verb == "POST") {
 
-	var settings = application.get("settings");
+  addSetting("paymentApiEndpoint", data.paymentApiEndpoint);
+  addSetting("accessToken", data.accessToken);
 
-	if(!settings){
-		settings = new Object();
-	}
-
-	settings.paymentApiEndpoint = data.paymentApiEndpoint;
-	settings.accessToken = data.accessToken;
-
-	application.put("settings", settings);
-
-	log.info(settings);
+  printSettings();
 
 	print({status:"success"});
 

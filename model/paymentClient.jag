@@ -4,8 +4,8 @@ function pay(payment){
 
   var settings = application.get("settings");
 
-  var paymentApiEndpoint = settings.paymentApiEndpoint;
-	var accessToken = settings.accessToken;
+  var paymentApiEndpoint = getSetting("paymentApiEndpoint");
+	var accessToken = getSetting("accessToken");
 
 
   // Call payment API
