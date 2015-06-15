@@ -14,11 +14,11 @@
 		%>
 
 		<div class="form-group">
-		  <label for="usr">Payment API URL</label>
+		  <label for="apiUrl">Payment API URL</label>
 		  <input type="text" class="form-control" id="apiUrl" value="<%=getSetting('paymentApiEndpoint')%>">
 		</div>
 		<div class="form-group">
-		  <label for="pwd">Payment API access token</label>
+		  <label for="accessToken">Payment API access token</label>
 		  <input type="text" class="form-control" id="accessToken" value="<%=getSetting('accessToken')%>">
 		</div>
 
