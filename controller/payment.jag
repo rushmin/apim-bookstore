@@ -17,8 +17,8 @@ if(data != "") {
 
 if (verb == "POST"){
 	log.info("Connecting to the payment API");
-	var response = pay(data);
-	print({status:"successful", transactionId : response.id});
+	var responsePayload = pay(data);
+	print({status:"successful", transactionId:responsePayload.id});
 }
 
 
