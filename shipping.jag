@@ -28,6 +28,8 @@
     <link href="css/custom-common.css" rel="stylesheet">    
     <link href="css/custom-desktop.css" rel="stylesheet">
     <link href="css/custom-theme.css" rel="stylesheet">
+    <link href="js/jquery-validationEngine/validationEngine.jquery.css" rel="stylesheet">
+    <link href="js/jquery-validationEngine/validationEngine.custom.css" rel="stylesheet">
 
 	<!--[if lt IE 9]>
 	<script src="js/html5shiv.min.js"></script>
@@ -128,33 +130,34 @@
 
 	<!-- content/body -->
 	<div class="row">
+	<form id="shipping-details-form" method="post" action="submit.action">
 		<div class="col-md-6">
 		
             <label class="wr-input-label">First Name</label>
             <div class="wr-input-control">
-                <input type="text" value="" placeholder="Ex: John"/>
+                <input type="text" value="" placeholder="Ex: John" class="validate[required]"/>
             </div>
 							
             <label class="wr-input-label">Last Name</label>
             <div class="wr-input-control">
-                <input type="text" value="" placeholder="Ex: Smith"/>
+                <input type="text" value="" placeholder="Ex: Smith" class="validate[required]"/>
             </div>
 
             <label class="wr-input-label">Email</label>
             <div class="wr-input-control">
-                <input type="text" value="" placeholder="Ex: johnsmith@jsmith.com"/>
+                <input type="text" value="" placeholder="Ex: johnsmith@jsmith.com" class="validate[required]"/>
             </div>		
 						
             <label class="wr-input-label">Address</label>
             <div class="wr-input-control">
-                <input type="text" value="" placeholder="Ex: 10, Colombo"/>
+                <input type="text" value="" placeholder="Ex: 10, Colombo" class="validate[required]"/>
             </div>	
 
             <label class="wr-input-label">City</label>
             <div class="wr-input-control">
 				<div class="row">
 					<div class="col-md-5">
-						<input type="text" value="" placeholder="Ex: Colombo"/>
+						<input type="text" value="" placeholder="Ex: Colombo" class="validate[required]"/>
 					</div>
 				</div>
             </div>	
@@ -163,7 +166,7 @@
             <div class="wr-input-control">
 				<div class="row">
 					<div class="col-md-5">			
-						<input type="text" value="" placeholder="Ex: State"/>
+						<input type="text" value="" placeholder="Ex: State" class="validate[required]"/>
 					</div>
 				</div>
             </div>							
@@ -172,7 +175,7 @@
             <div class="wr-input-control">
 				<div class="row">
 					<div class="col-md-5">				
-						<input type="text" value="" placeholder="Ex: 10001" />
+						<input type="text" value="" placeholder="Ex: 10001" class="validate[required]"/>
 					</div>
 				</div>
             </div>
@@ -181,7 +184,7 @@
             <div class="wr-input-control">
 				<div class="row">
 					<div class="col-md-5">				
-						<input type="text" value="" placeholder="Ex: LK"/>
+						<input type="text" value="" placeholder="Ex: LK" class="validate[required]"/>
 					</div>
 				</div>						
             </div>		
@@ -240,6 +243,9 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/operationsmenu.js"></script>
 <script src="js/common.js"></script>
+<script src="js/jquery-validationEngine/jquery.validationEngine-en.js"></script>
+<script src="js/jquery-validationEngine/jquery.validationEngine.js"></script>
+
 
 </body>
 </html>

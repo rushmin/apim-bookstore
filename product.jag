@@ -28,6 +28,8 @@
     <link href="css/custom-common.css" rel="stylesheet">    
     <link href="css/custom-desktop.css" rel="stylesheet">
     <link href="css/custom-theme.css" rel="stylesheet">
+    <link href="js/jquery-validationEngine/validationEngine.jquery.css" rel="stylesheet">
+    <link href="js/jquery-validationEngine/validationEngine.custom.css" rel="stylesheet">
 
 	<!--[if lt IE 9]>
 	<script src="js/html5shiv.min.js"></script>
@@ -182,7 +184,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 	</div>
 	<!-- /content/body -->
 
@@ -203,6 +205,9 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/operationsmenu.js"></script>
 <script src="js/common.js"></script>
+<script src="js/jquery-validationEngine/jquery.validationEngine-en.js"></script>
+<script src="js/jquery-validationEngine/jquery.validationEngine.js"></script>
+
 
 </body>
 </html>
