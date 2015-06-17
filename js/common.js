@@ -19,19 +19,40 @@ $( document ).ready(function() {
 
     $('.ctrl-wr-asset').click(function(){
         $(this).toggleClass('selected');
-    }); 
-
-    $("#checkout-btn").on("click",function(){
-        $("#select-product").hide();
-        $("#shipping-details").show();
     });
 
-    $("#billing-btn").on("click",function(){
-        $("#shipping-details").hide();
-        $("#billing-details").show();
-    });
-    
+    $("#login-form").validationEngine();
+    $("#login-btn").on("click",function(e){
+        e.preventDefault();
+        var status = $("#login-form").validationEngine('validate');
+        if(status){
+            location.href = "product.jag";
+        }else{
 
+        }
+    });
+
+    $("#shipping-details-form").validationEngine();
+    $("#billing-btn").on("click",function(e){
+        e.preventDefault();
+        var status = $("#shipping-details-form").validationEngine('validate');
+        if(status){
+           location.href = "payment.jag";
+        }else{
+
+        }
+    });
+
+    $("#confirm-form").validationEngine();
+    $("#confirm-btn").on("click",function(e){
+        e.preventDefault();
+        var status = $("#confirm-form").validationEngine('validate');
+        if(status){
+           console.log("SUCCESS..");
+        }else{
+
+        }
+    });
 
 });
 
