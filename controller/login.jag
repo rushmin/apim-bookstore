@@ -1,0 +1,35 @@
+<%
+
+response.contentType = 'text/json';
+
+var verb = request.getMethod();
+var data = request.getContent();
+
+var log = new Log();
+
+if(data != "") {
+	data = parse(data);
+}
+
+if (verb == "POST"){
+	log.info("User signing in");
+	var username = login(data);
+
+	if(username){
+		initPaymentRequest();
+		addEmail(username);
+		print({status:"successful", username:username);
+	}else{
+		response.sendError(400);
+	}
+
+	print({status:"successful", transactionId:responsePayload.id});
+}
+
+function login(credentials){
+	return credentials.username;
+}
+
+}
+
+%>

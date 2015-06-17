@@ -1,0 +1,25 @@
+<%
+
+function initPaymentRequest(){
+
+  // Load the template.
+  var paymentRequest = require("paymentRequestTemplate.json");
+
+  // Set the transaction id.
+  var uuid = require('uuid');
+  var id = new uuid.UUID();
+  paymentRequest.id = id.toString();
+
+  // Add the payment request to the user session.
+  session.put('paymentRequest', paymentRequest);
+}
+
+function getPaymentRequestInSession(){
+  return session.get('paymentRequest');
+}
+
+function addEmail(email){
+  getPaymentRequestInSession.payer.email = email;
+}
+
+%>
