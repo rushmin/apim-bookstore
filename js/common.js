@@ -26,7 +26,25 @@ $( document ).ready(function() {
         e.preventDefault();
         var status = $("#login-form").validationEngine('validate');
         if(status){
-            location.href = "product.jag";
+            var userId = encodeURI($("#userId").val());
+            var userPw = encodeURI($("#userPw").val());
+
+            $.ajax({
+              url: "product.jag",
+              data: {
+                userId: userId,
+                userPw: userPw
+              },
+              beforeSend: function( xhr ) {
+
+              }
+            }).done(function( data ) {
+                if ( console && console.log ) {
+                  console.log("done: "+data);
+                  location.href = "product.jag";
+                }
+            });
+
         }else{
 
         }
