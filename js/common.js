@@ -30,11 +30,14 @@ $( document ).ready(function() {
             var userPw = encodeURI($("#userPw").val());
 
             $.ajax({
-              url: "product.jag",
-              data: {
-                userId: userId,
-                userPw: userPw
-              },
+              method: "POST",
+              url: "login",
+              contentType:"application/json",
+              dataType: "json",
+              data: JSON.stringify({
+                "username": userId,
+                "password": userPw
+              }),
               beforeSend: function( xhr ) {
 
               }

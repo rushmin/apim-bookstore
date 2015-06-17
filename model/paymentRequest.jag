@@ -3,7 +3,7 @@
 function initPaymentRequest(){
 
   // Load the template.
-  var paymentRequest = require("paymentRequestTemplate.json");
+  var paymentRequest = require("../model/paymentRequestTemplate.json");
 
   // Set the transaction id.
   var uuid = require('uuid');
@@ -19,7 +19,7 @@ function getPaymentRequestInSession(){
 }
 
 function addEmail(email){
-  getPaymentRequestInSession.payer.email = email;
+  getPaymentRequestInSession().payer.email = email;
 }
 
 %>

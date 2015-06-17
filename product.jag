@@ -1,3 +1,7 @@
+<%
+include("model/paymentRequest.jag");
+%>
+
 <!--
 * Copyright (c) 2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
 *
@@ -51,7 +55,7 @@
                 <div class="wr-auth pull-right">
                     <a href="#" data-toggle="dropdown">
                         <div class="auth-img">
-                            Administrator
+                            <%=getPaymentRequestInSession().payer.email%>
                             <span class="fw-stack-md fw-lg">
                                 <i class="fw fw-user fw-stack-1-5x"></i>
                             </span>
