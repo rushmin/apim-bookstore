@@ -75,12 +75,12 @@
 
             <label class="wr-input-label">Username</label>
             <div class="wr-input-control">
-                <input type="text" value="" placeholder="input text" class="validate[required,custom[email]]"/>
+                <input id="userId" name="userId" type="text" value="" placeholder="input text" class="validate[required,custom[email]]"/>
             </div>
 
             <label class="wr-input-label">Password</label>
             <div class="wr-input-control">
-                <input type="password" value="" placeholder="input text" class="validate[required]"/>
+                <input id="userPw" name="userPw" type="password" value="" placeholder="input text" class="validate[required]"/>
             </div>
 
             <div class="wr-input-control">
