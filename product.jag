@@ -139,17 +139,20 @@ include("model/paymentRequest.jag");
 		</div>
 		
 		<div class="col-md-3 wr-prod-details">
-			<h4 class="prod-title">Fantastic Mr. Fox Paperback – <span>August 16, 2007</span></h4>
+			<h4 class="prod-title">Fantastic Mr. Fox Paperback -<span>August 16, 2007</span></h4>
 			<h5 class="prod-title"><span>by Roald Dahl and Quentin Blake</span></h5>
-			<label class="prod-price">US $ 200.00 </label>
+			<label class="prod-price">US $ <span class="unit-price">200</span>.00 </label>
 			
 			<div class="row wr-qty">
 				<div class="col-md-5">
 					<label class="input-label">Qty</label>
 					<div class="input-control text" data-role="input-control">
-						<select class="form-control">
+						<select id="prod-qty-select" class="form-control">
 							<option>1</option>
 							<option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
 						</select>
 					</div>	
 				</div>
@@ -166,25 +169,25 @@ include("model/paymentRequest.jag");
 				</div>
 			</div>
 			<div class="row order-line">
-				<div class="col-md-8 text-right order-lbl">Sub Total (1 item) :</div>
-				<div class="col-md-4 text-right order-val">$200.00</div>				
+				<div class="col-md-8 text-right order-lbl">Sub Total (<span class="prod-qty-display">1</span> item(s)) :</div>
+				<div class="col-md-4 text-right order-val">$<span class="sub-total">200</span>.00</div>
 			</div>
 			<div class="row order-line">
 				<div class="col-md-8 text-right order-lbl">Shipping :</div>
-				<div class="col-md-4 text-right order-val">$50.00</div>				
+				<div class="col-md-4 text-right order-val">$<span class="shipping-cost">50</span>.00</div>
 			</div>
 			<div class="row order-line">
-				<div class="col-md-8 text-right order-lbl">Tax (2.5%) :</div>
-				<div class="col-md-4 text-right order-val">$10.00</div>				
+				<div class="col-md-8 text-right order-lbl">Tax (2.0%) :</div>
+				<div class="col-md-4 text-right order-val">$<span class="tax-amount">1</span>.00</div>
 			</div>
 			<div class="row order-line">
 				<div class="col-md-8 text-right order-tot-lbl">Total :</div>
-				<div class="col-md-4 text-right order-tot-val">$260.00</div>				
+				<div class="col-md-4 text-right order-tot-val">$<span class="total">200</span>.00</div>
 			</div>	
 
 			<div class="row">
 				<div class="col-md-12 text-right">
-					<a href="shipping.jag" class="cu-btn-action">Checkout</a>
+					<a id="checkout-btn" href="#" class="cu-btn-action">Checkout</a>
 				</div>
 			</div>
 		</div>

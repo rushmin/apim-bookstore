@@ -19,7 +19,21 @@ function getPaymentRequestInSession(){
 }
 
 function addEmail(email){
-  getPaymentRequestInSession().payer.email = email;
+    getPaymentRequestInSession().payer.email = email;
 }
-
+function addQuantity(quantity){
+    getPaymentRequestInSession().transactions.order.quantity = quantity;
+}
+function addSubtotal(subtotal){
+    getPaymentRequestInSession().transactions.amount.details.subtotal = subtotal;
+}
+function addShipping(shipping){
+    getPaymentRequestInSession().transactions.amount.details.shipping = shipping;
+}
+function addTax(tax){
+    getPaymentRequestInSession().transactions.amount.details.tax = tax;
+}
+function addTotal(total){
+    getPaymentRequestInSession().transactions.amount.total = total;
+}
 %>
