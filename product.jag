@@ -25,7 +25,7 @@ include("model/paymentRequest.jag");
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Store</title>
+    <title>Galle Book Publishers</title>
 
     <link rel="icon" href="favicon.png" type="image/x-icon" />
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -49,7 +49,7 @@ include("model/paymentRequest.jag");
     <header>
         <div class="row wr-global-header">
             <div class="col-xs-8 col-sm-6 col-lg-8 app-logo">
-                <a href="product.jag"><img src="images/logo.png" /><h2 class="app-title">Book Store</h2></a>
+                <a href="product.jag"><img src="images/logo.png" /><h2 class="app-title">Book Publishers</h2></a>
             </div>
             <div class="col-xs-4 col-sm-6 col-lg-4 wr-auth-container">
                 <div class="wr-auth pull-right">
@@ -169,7 +169,7 @@ include("model/paymentRequest.jag");
 				</div>
 			</div>
 			<div class="row order-line">
-				<div class="col-md-8 text-right order-lbl">Sub Total (<span class="prod-qty-display">1</span> item(s)) :</div>
+				<div class="col-md-8 text-right order-lbl">Sub Total (<span class="prod-qty-display">1</span> item<span class="es" style="display:none;">s</span>) :</div>
 				<div class="col-md-4 text-right order-val">$<span class="sub-total">200</span>.00</div>
 			</div>
 			<div class="row order-line">
