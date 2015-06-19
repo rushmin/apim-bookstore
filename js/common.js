@@ -178,6 +178,12 @@ $( document ).ready(function() {
         var qty = Number($(this).val());
         var price = Number($(".unit-price").text());
         var subTotal = qty * price;
+        if(qty == 1){
+            $(".es").hide();
+        }else{
+            $(".es").show();
+        }
+
         console.log(qty+" - "+price+" - "+subTotal);
         $(".prod-qty-display").text(qty);
         $(".sub-total").text(subTotal);
