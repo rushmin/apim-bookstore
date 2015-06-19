@@ -1,0 +1,38 @@
+<%
+
+        include("../model/paymentRequest.jag");
+
+        response.contentType = 'text/json';
+
+        var verb = request.getMethod();
+        var data = request.getContent();
+
+        var log = new Log();
+
+        if (verb == "POST"){
+        log.info("Adding Product details");
+        var details = product(data);
+        log.info(details);
+
+
+        var username = getPaymentRequestInSession().payer.email;
+        if(username){
+        initPaymentRequest();
+        addQuantity(quantity);
+        addSubtotal(subtotal);
+        addShipping(shipping);
+        addTax(tax);
+        addTotal(total);
+        print({status:"successful", username:username});
+        }else{
+        response.sendError(400);
+        }
+
+        }
+
+        function product(details){
+        return details;
+        }
+
+
+        %>

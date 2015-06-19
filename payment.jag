@@ -1,3 +1,7 @@
+<%
+include("model/paymentRequest.jag");
+%>
+
 <!--
 * Copyright (c) 2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
 *
@@ -51,7 +55,7 @@
                 <div class="wr-auth pull-right">
                     <a href="#" data-toggle="dropdown">
                         <div class="auth-img">
-                            Administrator
+                            <%=getPaymentRequestInSession().payer.email%>
                             <span class="fw-stack-md fw-lg">
                                 <i class="fw fw-user fw-stack-1-5x"></i>
                             </span>
@@ -135,12 +139,12 @@
 		
             <label class="wr-input-label">Credit Card Number</label>
             <div class="wr-input-control">
-                <input type="text" value="" placeholder="Ex: 4444-XXXX-XXXX-XXXX" class="validate[required]"/>
+                <input id="ccnumber" name="ccnumber" type="text" value="" placeholder="Ex: 4444-XXXX-XXXX-XXXX" class="validate[required]"/>
             </div>
 							
             <label class="wr-input-label">Type</label>
             <div class="wr-input-control">
-				<select class="form-control">
+				<select id="cctype" name="cctype" class="form-control">
 					<option>VISA</option>
 					<option>Mastercard</option>
 				</select>
@@ -150,13 +154,13 @@
             <div class="wr-input-control">
 				<div class="row">
 					<div class="col-md-3">
-						<select class="form-control">
+						<select id="expmonth" name="expmonth" class="form-control">
 							<option>Month</option>
 							<option>January</option>
 						</select>
 					</div>
 					<div class="col-md-3">
-						<select class="form-control">
+						<select id="expyear" name="expyear" class="form-control">
 							<option>Year</option>
 							<option>2016</option>
 						</select>	
@@ -166,19 +170,19 @@
 						
             <label class="wr-input-label">3 Digit Security Code</label>
             <div class="wr-input-control">
-                <input type="text" value="" placeholder="Ex: 453" class="validate[required]"/>
+                <input id="seccode" name="seccode" type="text" value="" placeholder="Ex: 453" class="validate[required]"/>
             </div>	
 			
             <label class="wr-input-label">Billing Address</label>
             <div class="wr-input-control">
-                <input type="text" value="" placeholder="Ex: 10, 1st Street" class="validate[required]"/>
+                <input id="address" name="address" type="text" value="" placeholder="Ex: 10, 1st Street" class="validate[required]"/>
             </div>				
 
             <label class="wr-input-label">City</label>
             <div class="wr-input-control">
 				<div class="row">
 					<div class="col-md-5">
-						<input type="text" value="" placeholder="Ex: Colombo" class="validate[required]"/>
+						<input id="city" name="city" type="text" value="" placeholder="Ex: Colombo" class="validate[required]"/>
 					</div>
 				</div>
             </div>	
@@ -187,7 +191,7 @@
             <div class="wr-input-control">
 				<div class="row">
 					<div class="col-md-5">			
-						<input type="text" value="" placeholder="Ex: State" class="validate[required]"/>
+						<input id="state" name="state" type="text" value="" placeholder="Ex: State" class="validate[required]"/>
 					</div>
 				</div>
             </div>							
@@ -196,7 +200,7 @@
             <div class="wr-input-control">
 				<div class="row">
 					<div class="col-md-5">				
-						<input type="text" value="" placeholder="Ex: 10001" class="validate[required]"/>
+						<input id="postcode" name="postcode" type="text" value="" placeholder="Ex: 10001" class="validate[required]"/>
 					</div>
 				</div>
             </div>
@@ -205,7 +209,7 @@
             <div class="wr-input-control">
 				<div class="row">
 					<div class="col-md-5">				
-						<input type="text" value="" placeholder="Ex: LK" class="validate[required]"/>
+						<input id="countrycode" name="countrycode" type="text" value="" placeholder="Ex: LK" class="validate[required]"/>
 					</div>
 				</div>						
             </div>		
@@ -221,20 +225,20 @@
 				</div>
 			</div>
 			<div class="row order-line">
-				<div class="col-md-8 text-right order-lbl">Sub Total (1 item) :</div>
-				<div class="col-md-4 text-right order-val">$200.00</div>				
+				<div class="col-md-8 text-right order-lbl">Sub Total (<span class="prod-qty-display"><%=getPaymentRequestInSession().transactions.order.quantity%></span> item(s)) :</div>
+				<div class="col-md-4 text-right order-val">$<span class="sub-total"><%=getPaymentRequestInSession().transactions.amount.details.subtotal%></span>.00</div>
 			</div>
 			<div class="row order-line">
 				<div class="col-md-8 text-right order-lbl">Shipping :</div>
-				<div class="col-md-4 text-right order-val">$50.00</div>				
+				<div class="col-md-4 text-right order-val">$<span class="shipping-cost"><%=getPaymentRequestInSession().transactions.amount.details.shipping%></span>.00</div>
 			</div>
 			<div class="row order-line">
-				<div class="col-md-8 text-right order-lbl">Tax (2.5%) :</div>
-				<div class="col-md-4 text-right order-val">$10.00</div>				
+				<div class="col-md-8 text-right order-lbl">Tax (2.0%) :</div>
+				<div class="col-md-4 text-right order-val">$<span class="tax-amount"><%=getPaymentRequestInSession().transactions.amount.details.tax%></span>.00</div>
 			</div>
 			<div class="row order-line">
 				<div class="col-md-8 text-right order-tot-lbl">Total :</div>
-				<div class="col-md-4 text-right order-tot-val">$260.00</div>				
+				<div class="col-md-4 text-right order-tot-val">$<span class="total"><%=getPaymentRequestInSession().transactions.amount.total%></span>.00</div>
 			</div>	
 
 			<div class="row">

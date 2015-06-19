@@ -129,6 +129,12 @@ a.cu-btn-inner:hover {
     -webkit-appearance: none;
 }
 
+.wr-input-control input[disabled], .wr-input-control textarea[disabled] {
+    border: 1px #999 solid;
+    background:#eee;
+}
+
+
 /* form styles - settings panel - much darker font */
 .wr-settings .wr-input-control input, .wr-settings .wr-input-control textarea {
     color:#555;
