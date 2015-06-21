@@ -1,6 +1,7 @@
 <%
 include("model/paymentRequest.jag");
-var transactionInfo = getTransactionInfo();
+var transactionId = session.get("transactionId");
+session.remove("transactionId");
 %>
 
 <!--
@@ -96,107 +97,19 @@ var transactionInfo = getTransactionInfo();
 
 <div class="container">
 
-	<div class="row">
-		<div class="col-md-12">
-            <div class="row wr-wizard">
-                <div class="col-md-4 col-xs-4">
-                    <div class="itm-wiz itm-wiz-current"><div class="wiz-no">1</div><div class="wiz-lbl hidden-xs"><span>Select a Product</span></div></div>
-                        <br class="c-both" />
-                    </div>
-
-                    <div class="col-md-4 col-xs-4">
-                            <div class="itm-wiz"><div class="wiz-no">2</div><div class="wiz-lbl hidden-xs"><span>Shipping Details</span></div></div>
-                            <br class="c-both" />
-                    </div>
-                    <div class="col-md-4 col-xs-4">
-                    <div class="itm-wiz"><div class="wiz-no">3</div><div class="wiz-lbl hidden-xs"><span> Billing Details</span></div></div>
-                    <br class="c-both" />
-                </div>
-            </div>
-		</div>
-	</div>
-
-
 	<div class="row wr-form-head">
-		<div class="col-md-8">
-			<h2 class="sec-title">Select Product/Qty<h2>
-		</div>
-		<div class="col-md-4">
-		</div>
-	</div>
-
-	<div class="row wr-form-note">
 		<div class="col-md-12">
-		<p>* Select qty you need from this product.</p>
+			<h1 class="sec-title">Thank You !<h2>
 		</div>
 	</div>
 
+  <h3> Transaction id : <%=transactionId%> </h3>
 
-
-	<!-- content/body -->
-	<div class="row">
-		<div class="col-md-3">
-			<img src="images/book01.jpg" />
-		</div>
-
-		<div class="col-md-3 wr-prod-details">
-			<h4 class="prod-title">Fantastic Mr. Fox Paperback -<span>August 16, 2007</span></h4>
-			<h5 class="prod-title"><span>by Roald Dahl and Quentin Blake</span></h5>
-			<label class="prod-price">US $ <span class="unit-price">200</span>.00 </label>
-
-			<div class="row wr-qty">
-				<div class="col-md-5">
-					<label class="input-label">Qty</label>
-					<div class="input-control text" data-role="input-control">
-            <input id="prod-qty-select" name="prod-qty-select"  type="text" value="<%=transactionInfo.quantity%>"/>
-          </div>
-				</div>
-			</div>
-
-		</div>
-
-		<div class="col-md-4 col-md-offset-2 wr-order-box">
-			<div class="row ord-product">
-				<div class="col-md-12">
-					<div class="wr-order-box-prod">
-						<h5 class="prod-title">Fantastic Mr. Fox <span>by Roald Dahl and Quentin Blake</span><img src="images/book01.jpg" /></h5>
-					</div>
-				</div>
-			</div>
-      <div class="row order-line">
-				<div class="col-md-8 text-right order-lbl">Sub Total (<span class="prod-qty-display"><%=transactionInfo.quantity%></span> item(s)) :</div>
-				<div class="col-md-4 text-right order-val">$<span class="sub-total"><%=transactionInfo.subtotal%></span>.00</div>
-			</div>
-			<div class="row order-line">
-				<div class="col-md-8 text-right order-lbl">Shipping :</div>
-				<div class="col-md-4 text-right order-val">$<span class="shipping-cost">50</span>.00</div>
-			</div>
-			<div class="row order-line">
-				<div class="col-md-8 text-right order-lbl">Tax (2.0%) :</div>
-				<div class="col-md-4 text-right order-val">$<span class="tax-amount"><%=transactionInfo.tax%></span>.00</div>
-			</div>
-			<div class="row order-line">
-				<div class="col-md-8 text-right order-tot-lbl">Total :</div>
-				<div class="col-md-4 text-right order-tot-val">$<span class="total"><%=transactionInfo.total%></span>.00</div>
-			</div>
-
-			<div class="row">
-				<div class="col-md-12 text-right">
-					<a id="checkout-btn" href="#" class="cu-btn-action">Checkout</a>
-				</div>
-			</div>
-		</div>
-
-	</div>
-	<!-- /content/body -->
-
-
-
-    <!-- footer -->
-    <footer class="footer">
-        <p>APIM Book Store v.1.0.0 | &copy; <script>document.write(new Date().getFullYear());</script> <a href="http://wso2.com/" target="_blank"><i class="fw fw-wso2"></i> Inc</a>. All Rights Reserved.</p>
-    </footer>
-    <!-- /footer -->
+  <!-- footer -->
+  <footer class="footer">
+      <p>APIM Book Store v.1.0.0 | &copy; <script>document.write(new Date().getFullYear());</script> <a href="http://wso2.com/" target="_blank"><i class="fw fw-wso2"></i> Inc</a>. All Rights Reserved.</p>
+  </footer>
+  <!-- /footer -->
 
 </div>
 

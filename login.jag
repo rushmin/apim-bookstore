@@ -25,7 +25,7 @@
 
     <link rel="icon" href="favicon.png" type="image/x-icon" />
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/custom-common.css" rel="stylesheet">    
+    <link href="css/custom-common.css" rel="stylesheet">
     <link href="css/custom-desktop.css" rel="stylesheet">
     <link href="css/custom-theme.css" rel="stylesheet">
     <link href="js/jquery-validationEngine/validationEngine.jquery.css" rel="stylesheet">
@@ -55,43 +55,34 @@
         </div>
     </header>
     <!-- /header -->
-  
+
 </div>
 
 <div class="container">
 
 	<div class="row">
 		<div class="col-md-5 col-sm-7 col-centered col-centered">
-            <form id="login-form" method="post" action="submit.action">
-            <h1 class="wr-title">Login</h1>
-            Use APIM-IoT credentials to login.
-
-            <hr />
-
-            <!-- validation -->
-            <span class="wr-validation-summary">
-                <p>Login failed. Check your credentials and try again.</p>
-            </span>
+            <form id="login-form" method="post">
 
             <label class="wr-input-label">Username</label>
             <div class="wr-input-control">
-                <input id="userId" name="userId" type="text" value="" placeholder="input text" class="validate[required,custom[email]]"/>
+                <input id="userId" name="userId" type="text" value="" placeholder="e.g. john@abc.com" class="validate[required,custom[email]]"/>
             </div>
 
             <label class="wr-input-label">Password</label>
             <div class="wr-input-control">
-                <input id="userPw" name="userPw" type="password" value="" placeholder="input text" class="validate[required]"/>
+                <input id="userPw" name="userPw" type="password" value="" placeholder="" class="validate[required]"/>
             </div>
 
             <div class="wr-input-control">
                 <a id="login-btn" href="#" class="btn-login">Login</a>
             </div>
 
-     
+
 		    </form>
 		</div>
 	</div>
-	
+
 
     <!-- footer -->
     <footer class="footer">
@@ -111,6 +102,16 @@
 <script src="js/jquery-validationEngine/jquery.validationEngine-en.js"></script>
 <script src="js/jquery-validationEngine/jquery.validationEngine.js"></script>
 
+<script>
+
+  $(document).keypress(function(e) {
+    if(e.which === 13) {
+        // enter has been pressed, execute a click on #login-btn:
+        $("#login-btn").first().click();
+    }
+  });
+
+</script>
 
 </body>
 </html>

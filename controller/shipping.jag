@@ -1,0 +1,27 @@
+
+<%
+
+  include("../model/paymentRequest.jag");
+
+  response.contentType = 'text/json';
+
+  var verb = request.getMethod();
+  var data = request.getContent();
+
+  var log = new Log();
+
+  if (verb == "POST"){
+
+    log.info("Adding shipping details");
+
+    addShippingInfo(data);
+
+    log.info(getPaymentRequestInSession());
+
+    print({status:"successful"});
+  }else{
+    response.sendError(404);
+  }
+
+
+%>

@@ -1,5 +1,6 @@
 <%
 
+include("../model/paymentRequest.jag");
 include("../model/settingsManager.jag");
 include("../model/paymentClient.jag");
 
@@ -10,15 +11,20 @@ var data = request.getContent();
 
 var log = new Log();
 
-
-if(data != "") {
-	data = parse(data);
-}
-
 if (verb == "POST"){
 	log.info("Connecting to the payment API");
-	var responsePayload = pay(data);
-	print({status:"successful", transactionId:responsePayload.id});
+
+	addBillingInfo(data);
+
+	log.info(getPaymentRequestInSession());
+
+	var responsePayload = pay(getPaymentRequestInSession());
+
+	clearTransactionInfo();
+
+	session.put("transactionId", responsePayload.id);
+
+	print({status:"successful"});
 }
 
 
