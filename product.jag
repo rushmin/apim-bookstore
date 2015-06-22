@@ -141,7 +141,7 @@ include("model/paymentRequest.jag");
 		<div class="col-md-3 wr-prod-details">
 			<h4 class="prod-title">Fantastic Mr. Fox Paperback -<span>August 16, 2007</span></h4>
 			<h5 class="prod-title"><span>by Roald Dahl and Quentin Blake</span></h5>
-			<label class="prod-price">US $ <span class="unit-price">200</span>.00 </label>
+			<label class="prod-price">US $<span class="unit-price">200</span>.00 </label>
 			
 			<div class="row wr-qty">
 				<div class="col-md-5">

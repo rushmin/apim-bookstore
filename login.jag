@@ -64,12 +64,12 @@
 		<div class="col-md-5 col-sm-7 col-centered col-centered">
             <form id="login-form" method="post" action="submit.action">
             <h1 class="wr-title">Login</h1>
-            Use APIM-IoT credentials to login.
+            Use your Galle book publishers credentials to login.
 
             <hr />
 
             <!-- validation -->
-            <span class="wr-validation-summary">
+            <span class="wr-validation-summary hide">
                 <p>Login failed. Check your credentials and try again.</p>
             </span>
 
