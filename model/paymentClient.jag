@@ -2,13 +2,10 @@
 
 function pay(payment){
 
-  var settings = application.get("settings");
-
   var paymentApiEndpoint = getSetting("paymentApiEndpoint");
-	var accessToken = getSetting("accessToken");
 
   // Call payment API
-  tokenHeaderValue = "Bearer " + accessToken;
+  tokenHeaderValue = "Bearer " + getAccessToken();
 
   var xhr = new XMLHttpRequest();
   xhr.open("POST", paymentApiEndpoint, false);
@@ -19,6 +16,13 @@ function pay(payment){
   var response = xhr.responseText;
 
   return parse(response);
+}
+
+function getAccessToken(){
+
+  var accessToken = getSetting("accessToken");
+
+  return accessToken;
 }
 
 %>

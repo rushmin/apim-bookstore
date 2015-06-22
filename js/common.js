@@ -1,21 +1,21 @@
 $( document ).ready(function() {
 
-    $('[data-toggle="tooltip"]').tooltip();   
+    $('[data-toggle="tooltip"]').tooltip();
 
     $("[data-toggle=popover]").popover();
 
     $(".ctrl-filter-type-switcher").popover({
-        html : true, 
+        html : true,
         content: function() {
           return $('#content-filter-types').html();
         }
-    });    
+    });
 
 	$('#nav').affix({
 	      offset: {
 	        top: $('header').height()
 	      }
-	});	 
+	});
 
     $('.ctrl-wr-asset').click(function(){
         $(this).toggleClass('selected');
@@ -165,7 +165,7 @@ $( document ).ready(function() {
               }
             }).done(function( data ) {
                 if(data.status == "successful"){
-                    //TODO: call to apim endpoint
+                  location.href = "thanking.jag";
                 }
             });
 
@@ -211,5 +211,3 @@ function calculateTotal(){
     $(".tax-amount").text(taxAmount);
     $(".total").text(total);
 }
-
-

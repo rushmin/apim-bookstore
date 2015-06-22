@@ -1,5 +1,7 @@
 <%
-include("model/paymentRequest.jag");
+  include("model/paymentRequest.jag");
+  var transactionInfo = getTransactionInfo();
+  var billingInfo = getBillingInfo();
 %>
 
 <!--
@@ -29,7 +31,7 @@ include("model/paymentRequest.jag");
 
     <link rel="icon" href="favicon.png" type="image/x-icon" />
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/custom-common.css" rel="stylesheet">    
+    <link href="css/custom-common.css" rel="stylesheet">
     <link href="css/custom-desktop.css" rel="stylesheet">
     <link href="css/custom-theme.css" rel="stylesheet">
     <link href="js/jquery-validationEngine/validationEngine.jquery.css" rel="stylesheet">
@@ -72,12 +74,12 @@ include("model/paymentRequest.jag");
         </div>
     </header>
     <!-- /header -->
-	
+
     <!-- secondary header - app bar -->
     <div id="nav" class="row wr-app-bar">
         <div class="col-md-9 wr-action-container">
-		
-		
+
+
 			<div class="wr-action-btn-bar">
 				<a href="product.jag" class="cu-btn">
                     <span class="fw-stack">
@@ -87,10 +89,10 @@ include("model/paymentRequest.jag");
                     Products Home
                 </a>
             </div>
-			
+
         </div>
     </div>
-    <!-- secondary header - app bar -->	
+    <!-- secondary header - app bar -->
 </div>
 
 <div class="container">
@@ -99,23 +101,23 @@ include("model/paymentRequest.jag");
 		<div class="col-md-12">
             <div class="row wr-wizard">
                 <div class="col-md-4 col-xs-4">
-                    <div class="itm-wiz"><div class="wiz-no">1</div><div class="wiz-lbl hidden-xs"><span>Select a Product</span></div></div>
+                    <div class="itm-wiz"><div class="wiz-no"><a href="product.jag">1</a></div><div class="wiz-lbl hidden-xs"><span>Select a Product</span></div></div>
                         <br class="c-both" />
                     </div>
- 
+
                     <div class="col-md-4 col-xs-4">
-                            <div class="itm-wiz"><div class="wiz-no">2</div><div class="wiz-lbl hidden-xs"><span>Shipping Details</span></div></div>
+                            <div class="itm-wiz"><div class="wiz-no"><a href="shipping.jag">2</a></div><div class="wiz-lbl hidden-xs"><span>Shipping Details</span></div></div>
                             <br class="c-both" />
                     </div>
                     <div class="col-md-4 col-xs-4">
                     <div class="itm-wiz itm-wiz-current"><div class="wiz-no">3</div><div class="wiz-lbl hidden-xs"><span> Billing Details</span></div></div>
                     <br class="c-both" />
-                </div>						
-            </div>		
+                </div>
+            </div>
 		</div>
 	</div>
-	
-	
+
+
 	<div class="row wr-form-head">
 		<div class="col-md-8">
 			<h2 class="sec-title">Billing Details<h2>
@@ -123,25 +125,25 @@ include("model/paymentRequest.jag");
 		<div class="col-md-4">
 		</div>
 	</div>
-	
+
 	<div class="row wr-form-note">
 		<div class="col-md-12">
 		<p>* Provide your credit card details to complete the transaction.</p>
 		</div>
 	</div>
-		
-	
+
+
 
 	<!-- content/body -->
 	<div class="row">
 	<form id="confirm-form" method="post" action="submit.action">
 		<div class="col-md-6">
-		
+
             <label class="wr-input-label">Credit Card Number</label>
             <div class="wr-input-control">
                 <input id="ccnumber" name="ccnumber" type="text" value="" placeholder="Ex: 4444-XXXX-XXXX-XXXX" class="validate[required]"/>
             </div>
-							
+
             <label class="wr-input-label">Type</label>
             <div class="wr-input-control">
 				<select id="cctype" name="cctype" class="form-control">
@@ -156,51 +158,67 @@ include("model/paymentRequest.jag");
 					<div class="col-md-3">
 						<select id="expmonth" name="expmonth" class="form-control">
 							<option>Month</option>
-							<option>January</option>
+							<option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+              <option>11</option>
+              <option>12</option>
 						</select>
 					</div>
 					<div class="col-md-3">
 						<select id="expyear" name="expyear" class="form-control">
 							<option>Year</option>
-							<option>2016</option>
-						</select>	
+							<option>2015</option>
+              <option>2016</option>
+              <option>2017</option>
+              <option>2018</option>
+              <option>2019</option>
+              <option>2020</option>
+						</select>
 					</div>
 				</div>
-            </div>		
-						
+            </div>
+
             <label class="wr-input-label">3 Digit Security Code</label>
             <div class="wr-input-control">
                 <input id="seccode" name="seccode" type="text" value="" placeholder="Ex: 453" class="validate[required]"/>
-            </div>	
-			
+            </div>
+
             <label class="wr-input-label">Billing Address</label>
             <div class="wr-input-control">
-                <input id="address" name="address" type="text" value="" placeholder="Ex: 10, 1st Street" class="validate[required]"/>
-            </div>				
+                <input id="address" name="address" type="text" value="<%=billingInfo.line1%>" placeholder="Ex: 10, 1st Street" class="validate[required]"/>
+            </div>
 
             <label class="wr-input-label">City</label>
             <div class="wr-input-control">
 				<div class="row">
 					<div class="col-md-5">
-						<input id="city" name="city" type="text" value="" placeholder="Ex: Colombo" class="validate[required]"/>
+						<input id="city" name="city" type="text" value="<%=billingInfo.city%>" placeholder="Ex: Colombo" class="validate[required]"/>
 					</div>
 				</div>
-            </div>	
+            </div>
 
             <label class="wr-input-label">State</label>
             <div class="wr-input-control">
 				<div class="row">
-					<div class="col-md-5">			
-						<input id="state" name="state" type="text" value="" placeholder="Ex: State" class="validate[required]"/>
+					<div class="col-md-5">
+						<input id="state" name="state" type="text" value="<%=billingInfo.state%>" placeholder="Ex: State" class="validate[required]"/>
 					</div>
 				</div>
-            </div>							
+            </div>
 
             <label class="wr-input-label">Postal Code</label>
             <div class="wr-input-control">
 				<div class="row">
-					<div class="col-md-5">				
-						<input id="postcode" name="postcode" type="text" value="" placeholder="Ex: 10001" class="validate[required]"/>
+					<div class="col-md-5">
+						<input id="postcode" name="postcode" type="text" value="<%=billingInfo.postal_code%>" placeholder="Ex: 10001" class="validate[required]"/>
 					</div>
 				</div>
             </div>
@@ -208,14 +226,14 @@ include("model/paymentRequest.jag");
             <label class="wr-input-label">Country Code</label>
             <div class="wr-input-control">
 				<div class="row">
-					<div class="col-md-5">				
-						<input id="countrycode" name="countrycode" type="text" value="" placeholder="Ex: LK" class="validate[required]"/>
+					<div class="col-md-5">
+						<input id="countrycode" name="countrycode" type="text" value="<%=billingInfo.country_code%>" placeholder="Ex: LK" class="validate[required]"/>
 					</div>
-				</div>						
-            </div>		
-		
+				</div>
+            </div>
+
 		</div>
-		
+
 		<div class="col-md-4 col-md-offset-2 wr-order-box">
 			<div class="row ord-product">
 				<div class="col-md-12">
@@ -224,22 +242,22 @@ include("model/paymentRequest.jag");
 					</div>
 				</div>
 			</div>
-			<div class="row order-line">
-				<div class="col-md-8 text-right order-lbl">Sub Total (<span class="prod-qty-display"><%=getPaymentRequestInSession().transactions.order.quantity%></span> item(s)) :</div>
-				<div class="col-md-4 text-right order-val">$<span class="sub-total"><%=getPaymentRequestInSession().transactions.amount.details.subtotal%></span>.00</div>
+      <div class="row order-line">
+				<div class="col-md-8 text-right order-lbl">Sub Total (<span class="prod-qty-display"><%=transactionInfo.quantity%></span> item(s)) :</div>
+				<div class="col-md-4 text-right order-val">$<span class="sub-total"><%=transactionInfo.subtotal%></span>.00</div>
 			</div>
 			<div class="row order-line">
 				<div class="col-md-8 text-right order-lbl">Shipping :</div>
-				<div class="col-md-4 text-right order-val">$<span class="shipping-cost"><%=getPaymentRequestInSession().transactions.amount.details.shipping%></span>.00</div>
+				<div class="col-md-4 text-right order-val">$<span class="shipping-cost"><%=transactionInfo.shipping%></span>.00</div>
 			</div>
 			<div class="row order-line">
 				<div class="col-md-8 text-right order-lbl">Tax (2.0%) :</div>
-				<div class="col-md-4 text-right order-val">$<span class="tax-amount"><%=getPaymentRequestInSession().transactions.amount.details.tax%></span>.00</div>
+				<div class="col-md-4 text-right order-val">$<span class="tax-amount"><%=transactionInfo.tax%></span>.00</div>
 			</div>
 			<div class="row order-line">
 				<div class="col-md-8 text-right order-tot-lbl">Total :</div>
-				<div class="col-md-4 text-right order-tot-val">$<span class="total"><%=getPaymentRequestInSession().transactions.amount.total%></span>.00</div>
-			</div>	
+				<div class="col-md-4 text-right order-tot-val">$<span class="total"><%=transactionInfo.total%></span>.00</div>
+			</div>
 
 			<div class="row">
 				<div class="col-md-12 text-right">
