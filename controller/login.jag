@@ -1,7 +1,5 @@
 <%
 
-include("../model/paymentRequest.jag");
-
 response.contentType = 'text/json';
 
 var verb = request.getMethod();
@@ -14,9 +12,24 @@ if (verb == "POST"){
 	var username = login(data);
 
 	if(username){
-		initPaymentRequest();
-		addEmail(username);
+
+		var paymentRequest = require("../model/paymentRequest.js");
+		var template = require("../model/paymentRequestTemplate.json");
+		var tokenManager = require("../model/tokenManager.js")
+		var settingsManager = require("../model/settingsManager.js");
+
+		paymentRequest.init(template);
+
+
+    var tokenEndpoint = settingsManager.getSetting("gatewayUrl") + "/token";
+    var consumerKey = settingsManager.getSetting("consumerKey");
+    var consumerSecret = settingsManager.getSetting("consumerSecret");
+
+		tokenManager.getAndStoreUserToken(tokenEndpoint, consumerKey, consumerSecret,
+																									data.username, data.password);
+
 		print({status:"successful", username:username});
+
 	}else{
 		response.sendError(400);
 	}
@@ -24,6 +37,7 @@ if (verb == "POST"){
 }
 
 function login(credentials){
+	session.put("username", credentials.username);
 	return credentials.username;
 }
 

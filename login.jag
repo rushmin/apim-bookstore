@@ -66,7 +66,7 @@
 
             <label class="wr-input-label">Username</label>
             <div class="wr-input-control">
-                <input id="userId" name="userId" type="text" value="" placeholder="e.g. john@abc.com" class="validate[required,custom[email]]"/>
+                <input id="userId" name="userId" type="text" value="" placeholder="e.g. john" class="validate[required]"/>
             </div>
 
             <label class="wr-input-label">Password</label>

@@ -1,6 +1,7 @@
 <%
-include("model/paymentRequest.jag");
-var transactionInfo = getTransactionInfo();
+var paymentRequest = require("model/paymentRequest.js");
+var transactionInfo = paymentRequest.getTransactionInfo();
+var username = session.get("username");
 %>
 
 <!--
@@ -56,7 +57,7 @@ var transactionInfo = getTransactionInfo();
                 <div class="wr-auth pull-right">
                     <a href="#" data-toggle="dropdown">
                         <div class="auth-img">
-                            <%=getPaymentRequestInSession().payer.email%>
+                            <%=username%>
                             <span class="fw-stack-md fw-lg">
                                 <i class="fw fw-user fw-stack-1-5x"></i>
                             </span>

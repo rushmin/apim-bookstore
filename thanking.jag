@@ -1,7 +1,9 @@
 <%
-include("model/paymentRequest.jag");
 var transactionId = session.get("transactionId");
 session.remove("transactionId");
+
+var username = session.get("username");
+
 %>
 
 <!--
@@ -57,7 +59,7 @@ session.remove("transactionId");
                 <div class="wr-auth pull-right">
                     <a href="#" data-toggle="dropdown">
                         <div class="auth-img">
-                            <%=getPaymentRequestInSession().payer.email%>
+                            <%=username%>
                             <span class="fw-stack-md fw-lg">
                                 <i class="fw fw-user fw-stack-1-5x"></i>
                             </span>

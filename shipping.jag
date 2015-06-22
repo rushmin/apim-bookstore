@@ -1,7 +1,8 @@
 <%
-include("model/paymentRequest.jag");
-var shippingInfo = getShippingInfo();
-var transactionInfo = getTransactionInfo();
+var paymentRequest = require("model/paymentRequest.js");
+var shippingInfo = paymentRequest.getShippingInfo();
+var transactionInfo = paymentRequest.getTransactionInfo();
+var username = session.get("username");
 %>
 
 <!--
@@ -57,7 +58,7 @@ var transactionInfo = getTransactionInfo();
                 <div class="wr-auth pull-right">
                     <a href="#" data-toggle="dropdown">
                         <div class="auth-img">
-                            <%=getPaymentRequestInSession().payer.email%>
+                            <%=username%>
                             <span class="fw-stack-md fw-lg">
                                 <i class="fw fw-user fw-stack-1-5x"></i>
                             </span>
@@ -147,11 +148,6 @@ var transactionInfo = getTransactionInfo();
             <label class="wr-input-label">Last Name</label>
             <div class="wr-input-control">
                 <input id="lname" name="lname"  type="text" value="<%=shippingInfo.last_name%>" placeholder="Ex: Smith" class="validate[required]"/>
-            </div>
-
-            <label class="wr-input-label">Email</label>
-            <div class="wr-input-control">
-                <input id="email" name="email" type="text" value="<%=getPaymentRequestInSession().payer.email%>" placeholder="Ex: johnsmith@jsmith.com" class="validate[required]" disabled/>
             </div>
 
             <label class="wr-input-label">Address</label>

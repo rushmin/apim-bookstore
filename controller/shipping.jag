@@ -1,8 +1,6 @@
 
 <%
 
-  include("../model/paymentRequest.jag");
-
   response.contentType = 'text/json';
 
   var verb = request.getMethod();
@@ -14,9 +12,10 @@
 
     log.info("Adding shipping details");
 
-    addShippingInfo(data);
+    var paymentRequest = require("../model/paymentRequest.js");
+    paymentRequest.addShippingInfo(data);
 
-    log.info(getPaymentRequestInSession());
+    log.info(paymentRequest.getPaymentRequestInSession());
 
     print({status:"successful"});
   }else{

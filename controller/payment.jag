@@ -1,9 +1,5 @@
 <%
 
-include("../model/paymentRequest.jag");
-include("../model/settingsManager.jag");
-include("../model/paymentClient.jag");
-
 response.contentType = 'text/json';
 
 var verb = request.getMethod();
@@ -14,17 +10,39 @@ var log = new Log();
 if (verb == "POST"){
 	log.info("Connecting to the payment API");
 
-	addBillingInfo(data);
+	var paymentRequest = require("../model/paymentRequest.js");
+	var paymentClient = require("../model/paymentClient.js");
+	var settingsManager = require("../model/settingsManager.js");
 
-	log.info(getPaymentRequestInSession());
+	paymentRequest.addBillingInfo(data);
 
-	var responsePayload = pay(getPaymentRequestInSession());
+	var paymentRequestPayload = paymentRequest.getPaymentRequestInSession();
+	log.info(paymentRequestPayload);
 
-	clearTransactionInfo();
+	var paymentApiUrl = settingsManager.getSetting("gatewayUrl")+"/payfriend/v1/payments/payment";
+	var accessToken = getAccessToken();
+
+	var responsePayload = paymentClient.pay(paymentRequestPayload, paymentApiUrl, accessToken);
+
+	paymentRequest.clearTransactionInfo();
 
 	session.put("transactionId", responsePayload.id);
 
 	print({status:"successful"});
+}
+
+function getAccessToken(){
+
+	var settingsManager = require("../model/settingsManager.js");
+
+	var tokenEndpoint = settingsManager.getSetting("gatewayUrl") + "/token";
+	var consumerKey = settingsManager.getSetting("consumerKey");
+	var consumerSecret = settingsManager.getSetting("consumerSecret");
+
+	var tokenManager = require("../model/tokenManager.js");
+
+	return tokenManager.getAccessToken(tokenEndpoint, consumerKey, consumerSecret);
+
 }
 
 

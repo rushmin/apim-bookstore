@@ -137,6 +137,7 @@ $( document ).ready(function() {
             var expmonth = encodeURI($("#expmonth").val());
             var expyear = encodeURI($("#expyear").val());
             var seccode = encodeURI($("#seccode").val());
+            var email = encodeURI($("#email").val());
             var baddress = encodeURI($("#address").val());
             var bcity = encodeURI($("#city").val());
             var bstate = encodeURI($("#state").val());
@@ -154,6 +155,7 @@ $( document ).ready(function() {
                 "expire_month": expmonth,
                 "expire_year": expyear,
                 "cvv2": seccode,
+                "email":email,
                 "line1": baddress,
                 "city": bcity,
                 "state": bstate,

@@ -1,7 +1,8 @@
 <%
-  include("model/paymentRequest.jag");
-  var transactionInfo = getTransactionInfo();
-  var billingInfo = getBillingInfo();
+  var paymentRequest = require("model/paymentRequest.js");
+  var transactionInfo = paymentRequest.getTransactionInfo();
+  var billingInfo = paymentRequest.getBillingInfo();
+  var username = session.get("username");
 %>
 
 <!--
@@ -57,7 +58,7 @@
                 <div class="wr-auth pull-right">
                     <a href="#" data-toggle="dropdown">
                         <div class="auth-img">
-                            <%=getPaymentRequestInSession().payer.email%>
+                            <%=username%>
                             <span class="fw-stack-md fw-lg">
                                 <i class="fw fw-user fw-stack-1-5x"></i>
                             </span>
@@ -189,6 +190,11 @@
             <label class="wr-input-label">3 Digit Security Code</label>
             <div class="wr-input-control">
                 <input id="seccode" name="seccode" type="text" value="" placeholder="Ex: 453" class="validate[required]"/>
+            </div>
+
+            <label class="wr-input-label">Email</label>
+            <div class="wr-input-control">
+                <input id="email" name="email" type="text" value="<%=billingInfo.email%>" placeholder="Ex: johnsmith@jsmith.com" class="validate[required]" />
             </div>
 
             <label class="wr-input-label">Billing Address</label>

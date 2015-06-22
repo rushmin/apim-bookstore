@@ -10,16 +10,22 @@
 	<body>
 
 		<%
-			include("model/settingsManager.jag")
+			var settingsManager = require("model/settingsManager.js");
 		%>
 
 		<div class="form-group">
-		  <label for="apiUrl">Payment API URL</label>
-		  <input type="text" class="form-control" id="apiUrl" value="<%=getSetting('paymentApiEndpoint')%>">
+		  <label for="gatewayUrl">API gateway url</label>
+		  <input type="text" class="form-control" id="gatewayUrl" value="<%=settingsManager.getSetting('gatewayUrl')%>">
 		</div>
+
 		<div class="form-group">
-		  <label for="accessToken">Payment API access token</label>
-		  <input type="text" class="form-control" id="accessToken" value="<%=getSetting('accessToken')%>">
+		  <label for="consumerKey">Consumer key</label>
+		  <input type="text" class="form-control" id="consumerKey" value="<%=settingsManager.getSetting('consumerKey')%>">
+		</div>
+
+		<div class="form-group">
+		  <label for="consumerSecret">Consumer secret</label>
+		  <input type="text" class="form-control" id="consumerSecret" value="<%=settingsManager.getSetting('consumerSecret')%>">
 		</div>
 
 		<button type="button" id="saveButton" class="btn btn-primary">
