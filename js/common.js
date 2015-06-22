@@ -53,35 +53,43 @@ $( document ).ready(function() {
         }
     });
 
+
     //product details submission
+    $("#product-form").validationEngine();
     $("#checkout-btn").on("click",function(e){
         e.preventDefault();
-        var prodQty = encodeURI($("#prod-qty-select").val());
-        var subTotal = encodeURI($(".sub-total").text());
-        var shippingCost = encodeURI($(".shipping-cost").text());
-        var taxAmount = encodeURI($(".tax-amount").text());
-        var total = encodeURI($(".total").text());
+        var status = $("#product-form").validationEngine('validate');
+        if(status){
+            var prodQty = encodeURI($("#prod-qty-select").val());
+            var subTotal = encodeURI($(".sub-total").text());
+            var shippingCost = encodeURI($(".shipping-cost").text());
+            var taxAmount = encodeURI($(".tax-amount").text());
+            var total = encodeURI($(".total").text());
 
-        $.ajax({
-          method: "POST",
-          url: "product",
-          contentType:"application/json",
-          dataType: "json",
-          data: JSON.stringify({
-            "quantity": prodQty,
-            "subtotal": subTotal,
-            "shipping": shippingCost,
-            "tax": taxAmount,
-            "total": total,
-          }),
-          beforeSend: function( xhr ) {
+            $.ajax({
+              method: "POST",
+              url: "product",
+              contentType:"application/json",
+              dataType: "json",
+              data: JSON.stringify({
+                "quantity": prodQty,
+                "subtotal": subTotal,
+                "shipping": shippingCost,
+                "tax": taxAmount,
+                "total": total,
+              }),
+              beforeSend: function( xhr ) {
 
-          }
-        }).done(function( data ) {
-            if(data.status == "successful"){
-                location.href = "shipping.jag";
-            }
-        });
+              }
+            }).done(function( data ) {
+                if(data.status == "successful"){
+                    location.href = "shipping.jag";
+                }
+            });
+
+        }else{
+
+        }
     });
 
     //shipping details submission
@@ -174,7 +182,9 @@ $( document ).ready(function() {
         }
     });
 
-    $("#prod-qty-select").on("change",function(){
+
+
+    $("#prod-qty-select").on("keyup",function(){
         var qty = Number($(this).val());
         var price = Number($(".unit-price").text());
         var subTotal = qty * price;
@@ -184,12 +194,28 @@ $( document ).ready(function() {
             $(".es").show();
         }
 
-        console.log(qty+" - "+price+" - "+subTotal);
-        $(".prod-qty-display").text(qty);
-        $(".sub-total").text(subTotal);
-        calculateTotal();
+        if(isNaN(qty)){
+            $(".prod-qty-display").text("0");
+            $(".sub-total").text("0");
+        }else{
+            $(".prod-qty-display").text(qty);
+            $(".sub-total").text(subTotal);
+            calculateTotal();
+        }
+
     });
     calculateTotal();
+
+
+    $(document).keypress(function(e) {
+        if(e.which === 13) {
+            // enter has been pressed, execute a click on action buttons
+            $("#login-btn").click();
+            $("#checkout-btn").click();
+            $("#billing-btn").click();
+            $("#confirm-btn").click();
+        }
+      });
 });
 
 
