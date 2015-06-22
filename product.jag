@@ -136,6 +136,7 @@ var username = session.get("username");
 
 	<!-- content/body -->
 	<div class="row">
+        <form id="product-form" method="post">
 		<div class="col-md-3">
 			<img src="images/book01.jpg" />
 		</div>
@@ -143,13 +144,13 @@ var username = session.get("username");
 		<div class="col-md-3 wr-prod-details">
 			<h4 class="prod-title">Fantastic Mr. Fox Paperback -<span>August 16, 2007</span></h4>
 			<h5 class="prod-title"><span>by Roald Dahl and Quentin Blake</span></h5>
-			<label class="prod-price">US $ <span class="unit-price">200</span>.00 </label>
-
+			<label class="prod-price">US $<span class="unit-price">200</span>.00 </label>
 			<div class="row wr-qty">
 				<div class="col-md-5">
 					<label class="input-label">Qty</label>
 					<div class="input-control text" data-role="input-control">
-            <input id="prod-qty-select" name="prod-qty-select"  type="text" value="<%=transactionInfo.quantity%>"/>
+                            <input id="prod-qty-select" name="prod-qty-select" type="text"
+                                   value="<%=transactionInfo.quantity%>" class="validate[required,custom[onlyNumberNz]]" value="1"/>
           </div>
 				</div>
 			</div>
@@ -186,6 +187,7 @@ var username = session.get("username");
 					<a id="checkout-btn" href="#" class="cu-btn-action">Checkout</a>
 				</div>
 			</div>
+        </form>
 		</div>
 
 	</div>

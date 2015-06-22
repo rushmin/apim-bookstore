@@ -1,0 +1,28 @@
+<%
+
+function pay(payment){
+
+  var gatewayUrl = getSetting("gatewayUrl");
+
+  // Call payment API
+  tokenHeaderValue = "Bearer " + getAccessToken();
+
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", paymentApiEndpoint, false);
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.setRequestHeader("Authorization", tokenHeaderValue);
+  xhr.send(stringify(payment));
+
+  var response = xhr.responseText;
+
+  return parse(response);
+}
+
+function getAccessToken(){
+
+  var oauthToken = session.get("");
+
+  return accessToken;
+}
+
+%>

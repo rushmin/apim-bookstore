@@ -8,6 +8,7 @@ var data = request.getContent();
 var log = new Log();
 
 if (verb == "POST"){
+
 	log.info("User signing in");
 	var username = login(data);
 
@@ -40,6 +41,5 @@ function login(credentials){
 	session.put("username", credentials.username);
 	return credentials.username;
 }
-
 
 %>
