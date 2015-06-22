@@ -135,6 +135,7 @@ var transactionInfo = getTransactionInfo();
 
 	<!-- content/body -->
 	<div class="row">
+        <form id="product-form" method="post">
 		<div class="col-md-3">
 			<img src="images/book01.jpg" />
 		</div>
@@ -147,7 +148,8 @@ var transactionInfo = getTransactionInfo();
 				<div class="col-md-5">
 					<label class="input-label">Qty</label>
 					<div class="input-control text" data-role="input-control">
-            <input id="prod-qty-select" name="prod-qty-select"  type="text" value="<%=transactionInfo.quantity%>"/>
+                            <input id="prod-qty-select" name="prod-qty-select" type="text"
+                                   value="<%=transactionInfo.quantity%>" class="validate[required,custom[onlyNumberNz]]" value="1"/>
           </div>
 				</div>
 			</div>
@@ -184,6 +186,7 @@ var transactionInfo = getTransactionInfo();
 					<a id="checkout-btn" href="#" class="cu-btn-action">Checkout</a>
 				</div>
 			</div>
+        </form>
 		</div>
 
 	</div>

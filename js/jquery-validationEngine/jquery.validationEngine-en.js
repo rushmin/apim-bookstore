@@ -133,6 +133,10 @@
                     "regex": /^[0-9\ ]+$/,
                     "alertText": "* Numbers only"
                 },
+                "onlyNumberNz": {
+                    "regex": /^[1-9]\d*$/,
+                    "alertText": "* Positive Numbers only"
+                },
                 "onlyLetterSp": {
                     "regex": /^[a-zA-Z\ \']+$/,
                     "alertText": "* Letters only"

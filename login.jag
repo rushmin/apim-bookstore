@@ -63,10 +63,11 @@
 	<div class="row">
 		<div class="col-md-5 col-sm-7 col-centered col-centered">
             <form id="login-form" method="post">
-
+            <h1 class="wr-title">Login</h1>
+            <hr />
             <label class="wr-input-label">Username</label>
             <div class="wr-input-control">
-                <input id="userId" name="userId" type="text" value="" placeholder="e.g. john@abc.com" class="validate[required,custom[email]]"/>
+                <input id="userId" name="userId" type="text" value="" placeholder="e.g. john@abc.com" class="validate[required]"/>
             </div>
 
             <label class="wr-input-label">Password</label>
@@ -102,16 +103,7 @@
 <script src="js/jquery-validationEngine/jquery.validationEngine-en.js"></script>
 <script src="js/jquery-validationEngine/jquery.validationEngine.js"></script>
 
-<script>
 
-  $(document).keypress(function(e) {
-    if(e.which === 13) {
-        // enter has been pressed, execute a click on #login-btn:
-        $("#login-btn").first().click();
-    }
-  });
-
-</script>
 
 </body>
 </html>
