@@ -11,11 +11,6 @@ var log = new Log();
 var uri = request.getRequestURI();
 uri = uri.substring(request.getContextPath().length);
 
-if(data != "") {
-    data = parse(data);
-}
-
-
 if(verb == "POST") {
 
   settingsManager.addSetting("gatewayUrl", data.gatewayUrl);
