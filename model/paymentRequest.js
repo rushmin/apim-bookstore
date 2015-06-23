@@ -10,9 +10,7 @@ var init, getPaymentRequestInSession, addEmail, addTransactionInfo, clearTransac
     var paymentRequest = template;
 
     // Set the transaction id.
-    var uuid = require('uuid');
-    var id = new uuid.UUID();
-    paymentRequest.id = id.toString();
+    paymentRequest.id = uuid();
 
     // Add the payment request to the user session.
     session.put('paymentRequest', paymentRequest);
@@ -104,7 +102,7 @@ var init, getPaymentRequestInSession, addEmail, addTransactionInfo, clearTransac
     creditCard.expire_month = billingInfo.expire_month;
     creditCard.expire_year = billingInfo.expire_year;
 
-    getPaymentRequestInSession().payer.email = billingInfo.email; 
+    getPaymentRequestInSession().payer.email = billingInfo.email;
 
     creditCard.billing_address.line1 = billingInfo.line1;
     creditCard.billing_address.city = billingInfo.city;
@@ -128,6 +126,16 @@ var init, getPaymentRequestInSession, addEmail, addTransactionInfo, clearTransac
 
     return billingInfo;
 
+  }
+
+  var uuid = function() {
+    function s4() {
+      return Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16)
+        .substring(1);
+    }
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+      s4() + '-' + s4() + s4() + s4();
   }
 
 }());
