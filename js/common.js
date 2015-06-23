@@ -152,6 +152,8 @@ $( document ).ready(function() {
             var bpostcode = encodeURI($("#postcode").val());
             var bcountrycode = encodeURI($("#countrycode").val());
 
+            var mockClientIP = encodeURI($("#mockClientIP").val());
+
             $.ajax({
               method: "POST",
               url: "payment",
@@ -171,7 +173,9 @@ $( document ).ready(function() {
                 "country_code": bcountrycode
               }),
               beforeSend: function( xhr ) {
-
+                if(mockClientIP && mockClientIP.length > 6){
+                  xhr.setRequestHeader("Fraud-Detection-Mock-Client-IP", mockClientIP);
+                }
               }
             }).done(function( data ) {
                 if(data.status == "successful"){

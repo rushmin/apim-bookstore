@@ -22,7 +22,7 @@ if (verb == "POST"){
 	var paymentApiUrl = settingsManager.getSetting("gatewayUrl")+"/payfriend/v1/payments/payment";
 	var accessToken = getAccessToken();
 
-	var responsePayload = paymentClient.pay(paymentRequestPayload, paymentApiUrl, accessToken);
+	var responsePayload = paymentClient.pay(paymentRequestPayload, paymentApiUrl, accessToken, getClientIP(request));
 
 	paymentRequest.clearTransactionInfo();
 
@@ -42,6 +42,18 @@ function getAccessToken(){
 	var tokenManager = require("../model/tokenManager.js");
 
 	return tokenManager.getAccessToken(tokenEndpoint, consumerKey, consumerSecret);
+
+}
+
+function getClientIP(request){
+
+	var mockIP = request.getHeader("Fraud-Detection-Mock-Client-IP");
+
+	if(mockIP){
+		return mockIP;
+	}else{
+		return request.getRemoteAddr();
+	}
 
 }
 
