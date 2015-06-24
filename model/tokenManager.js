@@ -10,9 +10,11 @@ var getAndStoreUserToken, getAccessToken;
 
     var result = post(tokenEndpoint, payload, {"Authorization" : authHeader}, 'json');
 
-    new Log().info(result.data);
+    new Log().info(result);
 
     session.put("oauthToken", result.data);
+
+    return result.data;
 
   }
 

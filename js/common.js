@@ -45,7 +45,13 @@ $( document ).ready(function() {
             }).done(function( data ) {
                 if(data.status == "successful"){
                     location.href = "product.jag";
+                }else if(data.status == "error"){
+                    alert("Login failed : " + data.errorMessage);
+                }else{
+                    alert("Login failed : " + JSON.stringify(data));
                 }
+            }).fail(function( jqXHR, textStatus ) {
+                alert( "Request failed: " + textStatus );
             });
 
         }else{

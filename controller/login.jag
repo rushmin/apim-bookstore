@@ -26,10 +26,15 @@ if (verb == "POST"){
     var consumerKey = settingsManager.getSetting("consumerKey");
     var consumerSecret = settingsManager.getSetting("consumerSecret");
 
-		tokenManager.getAndStoreUserToken(tokenEndpoint, consumerKey, consumerSecret,
+		var tokenResult = tokenManager.getAndStoreUserToken(tokenEndpoint, consumerKey, consumerSecret,
 																									data.username, data.password);
 
-		print({status:"successful", username:username});
+		if(tokenResult.access_token){
+			print({status:"successful", username:username});
+		}else{
+			print({status:"error", errorMessage:tokenResult.error_description});
+		}
+
 
 	}else{
 		response.sendError(400);
