@@ -27,8 +27,8 @@ $( document ).ready(function() {
         e.preventDefault();
         var status = $("#login-form").validationEngine('validate');
         if(status){
-            var userId = encodeURI($("#userId").val());
-            var userPw = encodeURI($("#userPw").val());
+            var userId = $("#userId").val();
+            var userPw = $("#userPw").val();
 
             $.ajax({
               method: "POST",
@@ -106,11 +106,11 @@ $( document ).ready(function() {
         if(status){
             var fname = encodeURI($("#fname").val());
             var lname = encodeURI($("#lname").val());
-            var address = encodeURI($("#address").val());
-            var city = encodeURI($("#city").val());
-            var state = encodeURI($("#state").val());
-            var postcode = encodeURI($("#postcode").val());
-            var countrycode = encodeURI($("#countrycode").val());
+            var address = $("#address").val();
+            var city = $("#city").val();
+            var state = $("#state").val();
+            var postcode = $("#postcode").val();
+            var countrycode = $("#countrycode").val();
 
             $.ajax({
               method: "POST",
@@ -151,12 +151,12 @@ $( document ).ready(function() {
             var expmonth = encodeURI($("#expmonth").val());
             var expyear = encodeURI($("#expyear").val());
             var seccode = encodeURI($("#seccode").val());
-            var email = encodeURI($("#email").val());
-            var baddress = encodeURI($("#address").val());
-            var bcity = encodeURI($("#city").val());
-            var bstate = encodeURI($("#state").val());
-            var bpostcode = encodeURI($("#postcode").val());
-            var bcountrycode = encodeURI($("#countrycode").val());
+            var email = $("#email").val();
+            var baddress = $("#address").val();
+            var bcity = $("#city").val();
+            var bstate = $("#state").val();
+            var bpostcode = $("#postcode").val();
+            var bcountrycode = $("#countrycode").val();
 
             var mockClientIP = encodeURI($("#mockClientIP").val());
 

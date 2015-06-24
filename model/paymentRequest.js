@@ -123,6 +123,7 @@ var init, getPaymentRequestInSession, addEmail, addTransactionInfo, clearTransac
     billingInfo.state = billingAddress.state;
     billingInfo.postal_code = billingAddress.postal_code;
     billingInfo.country_code = billingAddress.country_code;
+    billingInfo.email = getPaymentRequestInSession().payer.email;
 
     return billingInfo;
 

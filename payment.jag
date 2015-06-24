@@ -142,7 +142,7 @@
 
             <label class="wr-input-label">Credit Card Number</label>
             <div class="wr-input-control">
-                <input id="ccnumber" name="ccnumber" type="text" value="" placeholder="Ex: 4444-XXXX-XXXX-XXXX" class="validate[required]"/>
+                <input id="ccnumber" name="ccnumber" type="text" value="" placeholder="e.g. 4444XXXXXXXXXXXX" class="validate[required]"/>
             </div>
 
             <label class="wr-input-label">Type</label>
@@ -189,24 +189,24 @@
 
             <label class="wr-input-label">3 Digit Security Code</label>
             <div class="wr-input-control">
-                <input id="seccode" name="seccode" type="text" value="" placeholder="Ex: 453" class="validate[required]"/>
+                <input id="seccode" name="seccode" type="text" value="" placeholder="e.g. 453" class="validate[required]"/>
             </div>
 
             <label class="wr-input-label">Email</label>
             <div class="wr-input-control">
-                <input id="email" name="email" type="text" value="<%=billingInfo.email%>" placeholder="Ex: johnsmith@jsmith.com" class="validate[required]" />
+                <input id="email" name="email" type="text" value="<%=billingInfo.email%>" placeholder="e.g. johnsmith@jsmith.com" class="validate[required]" />
             </div>
 
             <label class="wr-input-label">Billing Address</label>
             <div class="wr-input-control">
-                <input id="address" name="address" type="text" value="<%=billingInfo.line1%>" placeholder="Ex: 10, 1st Street" class="validate[required]"/>
+                <input id="address" name="address" type="text" value="<%=billingInfo.line1%>" placeholder="e.g. 42 E 20th St" class="validate[required]"/>
             </div>
 
             <label class="wr-input-label">City</label>
             <div class="wr-input-control">
 				<div class="row">
 					<div class="col-md-5">
-						<input id="city" name="city" type="text" value="<%=billingInfo.city%>" placeholder="Ex: Colombo" class="validate[required]"/>
+						<input id="city" name="city" type="text" value="<%=billingInfo.city%>" placeholder="e.g. New York" class="validate[required]"/>
 					</div>
 				</div>
             </div>
@@ -215,7 +215,7 @@
             <div class="wr-input-control">
 				<div class="row">
 					<div class="col-md-5">
-						<input id="state" name="state" type="text" value="<%=billingInfo.state%>" placeholder="Ex: State" class="validate[required]"/>
+						<input id="state" name="state" type="text" value="<%=billingInfo.state%>" placeholder="e.g. NY" class="validate[required]"/>
 					</div>
 				</div>
             </div>
@@ -224,7 +224,7 @@
             <div class="wr-input-control">
 				<div class="row">
 					<div class="col-md-5">
-						<input id="postcode" name="postcode" type="text" value="<%=billingInfo.postal_code%>" placeholder="Ex: 10001" class="validate[required]"/>
+						<input id="postcode" name="postcode" type="text" value="<%=billingInfo.postal_code%>" placeholder="e.g. 10003" class="validate[required]"/>
 					</div>
 				</div>
             </div>
@@ -233,7 +233,7 @@
             <div class="wr-input-control">
 				<div class="row">
 					<div class="col-md-5">
-						<input id="countrycode" name="countrycode" type="text" value="<%=billingInfo.country_code%>" placeholder="Ex: LK" class="validate[required]"/>
+						<input id="countrycode" name="countrycode" type="text" value="<%=billingInfo.country_code%>" placeholder="e.g. USA" class="validate[required]"/>
 					</div>
 				</div>
             </div>
@@ -242,7 +242,7 @@
             <div class="wr-input-control">
 				<div class="row">
 					<div class="col-md-5">
-						<input id="mockClientIP" name="mockClientIP" type="text" value="" placeholder="Ex: 127.0.0.1"/>
+						<input id="mockClientIP" name="mockClientIP" type="text" value="" placeholder="e.g. 68.175.10.43"/>
 					</div>
 				</div>
             </div>

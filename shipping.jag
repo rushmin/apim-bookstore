@@ -142,24 +142,24 @@ var username = session.get("username");
 
             <label class="wr-input-label">First Name</label>
             <div class="wr-input-control">
-                <input id="fname" name="fname" type="text" value="<%=shippingInfo.first_name%>" placeholder="Ex: John" class="validate[required]"/>
+                <input id="fname" name="fname" type="text" value="<%=shippingInfo.first_name%>" placeholder="e.g. John" class="validate[required]"/>
             </div>
 
             <label class="wr-input-label">Last Name</label>
             <div class="wr-input-control">
-                <input id="lname" name="lname"  type="text" value="<%=shippingInfo.last_name%>" placeholder="Ex: Smith" class="validate[required]"/>
+                <input id="lname" name="lname"  type="text" value="<%=shippingInfo.last_name%>" placeholder="e.g. Smith" class="validate[required]"/>
             </div>
 
             <label class="wr-input-label">Address</label>
             <div class="wr-input-control">
-                <input id="address" name="address" type="text" value="<%=shippingInfo.line1%>" placeholder="Ex: 10, Colombo" class="validate[required]"/>
+                <input id="address" name="address" type="text" value="<%=shippingInfo.line1%>" placeholder="e.g. 42 E 20th St" class="validate[required]"/>
             </div>
 
             <label class="wr-input-label">City</label>
             <div class="wr-input-control">
 				<div class="row">
 					<div class="col-md-5">
-						<input id="city" name="city" type="text" value="<%=shippingInfo.city%>" placeholder="Ex: Colombo" class="validate[required]"/>
+						<input id="city" name="city" type="text" value="<%=shippingInfo.city%>" placeholder="e.g. New York" class="validate[required]"/>
 					</div>
 				</div>
             </div>
@@ -168,7 +168,7 @@ var username = session.get("username");
             <div class="wr-input-control">
 				<div class="row">
 					<div class="col-md-5">
-						<input id="state" name="state" type="text" value="<%=shippingInfo.state%>" placeholder="Ex: State" class="validate[required]"/>
+						<input id="state" name="state" type="text" value="<%=shippingInfo.state%>" placeholder="Ex: NY" class="validate[required]"/>
 					</div>
 				</div>
             </div>
@@ -177,7 +177,7 @@ var username = session.get("username");
             <div class="wr-input-control">
 				<div class="row">
 					<div class="col-md-5">
-						<input id="postcode" name="postcode" type="text" value="<%=shippingInfo.postal_code%>" placeholder="Ex: 10001" class="validate[required]"/>
+						<input id="postcode" name="postcode" type="text" value="<%=shippingInfo.postal_code%>" placeholder="Ex: 10003" class="validate[required]"/>
 					</div>
 				</div>
             </div>
@@ -186,7 +186,7 @@ var username = session.get("username");
             <div class="wr-input-control">
 				<div class="row">
 					<div class="col-md-5">
-						<input id="countrycode" name="countrycode" type="text" value="<%=shippingInfo.country_code%>" placeholder="Ex: LK" class="validate[required]"/>
+						<input id="countrycode" name="countrycode" type="text" value="<%=shippingInfo.country_code%>" placeholder="Ex: USA" class="validate[required]"/>
 					</div>
 				</div>
             </div>
